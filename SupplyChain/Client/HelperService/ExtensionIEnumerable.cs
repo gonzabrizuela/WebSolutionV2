@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,10 +28,6 @@ namespace SupplyChain.Client.HelperService
             }
         }
 
-        public static ObservableCollection<T> Convert<T>(IEnumerable<T> original)
-        {
-            return new ObservableCollection<T>(original);
-        }
 
     }
 }

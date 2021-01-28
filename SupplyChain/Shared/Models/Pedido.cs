@@ -7,9 +7,9 @@ namespace SupplyChain.Shared.Models
     [Table("Pedidos")]
 	public class PedidosBak
 	{
-		[Display(Name ="Vale")]
+		[ColumnaGridViewAtributo(Name ="Vale")]
 		public decimal VALE { get; set; }
-		[Display(Name = "Fecha Vale")]
+		[ColumnaGridViewAtributo(Name = "Fecha Vale")]
 		public DateTime FE_MOV { get; set; }
 		public decimal VOUCHER { get; set; }
 		public string COMPROB { get; set; }
@@ -32,9 +32,9 @@ namespace SupplyChain.Shared.Models
 		public string AVISO { get; set; }
 		public string DIRENT { get; set; }
 		public int CG_ORDEN { get; set; }
-		[Display(Name ="Codigo Articulo")]
+		[ColumnaGridViewAtributo(Name ="Codigo Articulo")]
 		public string CG_ART { get; set; }
-		[Display(Name = "Descripcion Articulo")]
+		[ColumnaGridViewAtributo(Name = "Descripcion Articulo")]
 		public string DES_ART { get; set; }
 		public string TIPO { get; set; }
 		public string LOTE { get; set; }

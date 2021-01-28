@@ -7,17 +7,17 @@ namespace SupplyChain.Shared.Models
     public class Solution
     {
         [Key]
-        [Display(Name = "Codigo")]
+        [ColumnaGridViewAtributo(Name = "Codigo")]
         public string CAMPO { get; set; }
-        [Display(Name = "Tipo")]
+        [ColumnaGridViewAtributo(Name = "Tipo")]
         public string TIPO { get; set; }
-        [Display(Name = "Valor numérico")]
+        [ColumnaGridViewAtributo(Name = "Valor numérico")]
         public decimal? VALORN { get; set; }
-        [Display(Name = "Valor alfanumérico")]
+        [ColumnaGridViewAtributo(Name = "Valor alfanumérico")]
         public string VALORC { get; set; }
-        [Display(Name = "Nombre del campo")]
+        [ColumnaGridViewAtributo(Name = "Nombre del campo")]
         public string DESCRIP { get; set; }
-        [Display(Name = "Compañía")]
+        [ColumnaGridViewAtributo(Name = "Compañía")]
         public int? CG_CIA { get; set; }
 
 

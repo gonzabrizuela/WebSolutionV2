@@ -1,0 +1,93 @@
+﻿@page "/turnos"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+@using System.Configuration;
+@using System.Data.SqlClient;
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.BarcodeGenerator
+@using System.Text.Json
+@using System.Linq
+@inject IJSRuntime JsRuntime
+@using SupplyChain
+@using System.Net.Http.Json
+
+@inject NavigationManager NavManager
+@inherits SupplyChain.Pages.Turnoss.TurnosPageBase
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid AllowReordering="true" ShowColumnChooser="true" ShowColumnMenu="true" AllowResizing="true" EnablePersistence="true"
+                    @ref="Grid" DataSource="@turnitos" AllowExcelExport="true" AllowRowDragAndDrop="true" AllowGrouping="true"
+                    AllowSorting="true" AllowPaging="true" AllowFiltering="true" Toolbar="@Toolbaritems">
+                <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GridSelectionSettings>
+                <GridEvents OnToolbarClick="@ClickHandler" OnActionBegin="ActionBegin" TValue="Turnos"></GridEvents>
+                <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.CheckBox"></GridFilterSettings>
+                <GridGroupSettings ShowGroupedColumn="true"></GridGroupSettings>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="@EditMode.Dialog">
+                    <Template>
+                        @{
+                            var tur = (context as Turnos);
+                                                <div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Código del turno:</label>
+                                                            <SfNumericTextBox ID="CG_TURNO" @bind-Value="@(tur.CG_TURNO)" Enabled="@Disabled"></SfNumericTextBox>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Turno:</label>
+                                                            <SfTextBox ID="TURNO" @bind-Value="@(tur.TURNO)"></SfTextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Desde:</label>
+                                                            <SfDateTimePicker ID="DESDE" @bind-Value="@(tur.DESDE)" ></SfDateTimePicker>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Hasta:</label>
+                                                            <SfDateTimePicker ID="HASTA" @bind-Value="@(tur.HASTA)"></SfDateTimePicker>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        }
+                    </Template>
+                </GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Turnos.CG_TURNO) HeaderText="Codigo del turno" TextAlign="TextAlign.Left" IsPrimaryKey="true"></GridColumn>
+                    <GridColumn Field=@nameof(Turnos.TURNO) HeaderText="Turno" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Turnos.DESDE) HeaderText="Desde" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Turnos.HASTA) HeaderText="Hasta" TextAlign="TextAlign.Left"></GridColumn>
+
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
+<style>
+    .form-group.col-md-6 {
+        width: 200px;
+    }
+
+    label.e-float-text {
+        position: relative;
+        padding-left: 0;
+        top: 10%;
+    }
+
+    .e-input-group.e-control-wrapper.customClass {
+        color: black;
+        background-color: lightblue;
+    }
+</style>
+
+@code {
+    
+}

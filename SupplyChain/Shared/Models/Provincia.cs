@@ -7,12 +7,12 @@ namespace SupplyChain.Shared.Models
     public class Provincia
     {
         [Key]
-        [Display(Name = "Codigo")]
+        [ColumnaGridViewAtributo(Name = "Codigo")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? CG_PROV { get; set; }
-        [Display(Name = "Provincia")]
+        [ColumnaGridViewAtributo(Name = "Provincia")]
         public string DES_PROV { get; set; }
-        [Display(Name = "Pais")]
+        [ColumnaGridViewAtributo(Name = "Pais")]
         public int? CG_PAIS { get; set; }
 
     }

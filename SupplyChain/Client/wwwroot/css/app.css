@@ -80,6 +80,15 @@ table.myFormatHeader th {
     font-size: 12px;
 }
 
+/*ancho del modal de devexpress*/
+.myPopupCss {
+    max-width: 900px;
+}
+
+/*tamano de la fuente en el filtro de las grillas de devexpress*/
+tr.dxbs-filter-row {
+    font-size: 11px;
+}
 
 ul.pagination {
     font-size: 11px;

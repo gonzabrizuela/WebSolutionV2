@@ -7,13 +7,13 @@ namespace SupplyChain.Shared.Models
     public class TareaProceso
     {
         [Key]
-        [Display(Name = "Codigo")]
+        [ColumnaGridViewAtributo(Name = "Codigo")]
         public string TAREAPROC { get; set; }
-        [Display(Name = "Tarea del proceso")]
+        [ColumnaGridViewAtributo(Name = "Tarea del proceso")]
         public string DESCRIP { get; set; }
-        [Display(Name = "Observaciones")]
+        [ColumnaGridViewAtributo(Name = "Observaciones")]
         public string OBSERVAC { get; set; }
-        [Display(Name = "Compañía")]
+        [ColumnaGridViewAtributo(Name = "Compañía")]
         public int? CG_CIA { get; set; }
 
 

@@ -30,7 +30,7 @@ namespace PCP.Server.Controllers
         public async Task<ActionResult<IEnumerable<Programa>>> GetProgramas()
         {
             return await _context.Programas.Where(p => p.Cg_Cia == cg_cia_usuario)
-                .Take(20).OrderBy(r=> r.FE_EMIT).ToListAsync();
+                .Take(20).ToListAsync();
  
         }
 

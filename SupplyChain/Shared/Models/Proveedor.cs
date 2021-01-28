@@ -9,62 +9,62 @@ namespace SupplyChain.Shared.Models
     public class Proveedor
     {
         [Key]
-        [Display(Name = "Codigo")]
+        [ColumnaGridViewAtributo(Name = "Codigo")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? CG_PROVE { get; set; }
-        [Display(Name = "Nombre del proveedor")]
+        [ColumnaGridViewAtributo(Name = "Nombre del proveedor")]
         public string DES_PROVE { get; set; }
-        [Display(Name = "Onservaciones")]
+        [ColumnaGridViewAtributo(Name = "Onservaciones")]
         public string OBSERVACIONES { get; set; }
-        [Display(Name = "Dirección")]
+        [ColumnaGridViewAtributo(Name = "Dirección")]
         public string DIRECC { get; set; }
-        [Display(Name = "Localidad")]
+        [ColumnaGridViewAtributo(Name = "Localidad")]
         public string LOCALIDAD { get; set; }
-        [Display(Name = "Codigo postal")]
+        [ColumnaGridViewAtributo(Name = "Codigo postal")]
         public int? CG_POST { get; set; }
-        [Display(Name = "Provincia")]
+        [ColumnaGridViewAtributo(Name = "Provincia")]
         public int? CG_PROV { get; set; }
-        [Display(Name = "Nombre provincia")]
+        [ColumnaGridViewAtributo(Name = "Nombre provincia")]
         public string DES_PROV { get; set; }
-        [Display(Name = "Pais")]
+        [ColumnaGridViewAtributo(Name = "Pais")]
         public int? CG_PAIS { get; set; }
-        [Display(Name = "Condición fiscal")]
+        [ColumnaGridViewAtributo(Name = "Condición fiscal")]
         public string CG_COND { get; set; }
-        [Display(Name = "Fecha alta")]
+        [ColumnaGridViewAtributo(Name = "Fecha alta")]
         public DateTime FE_ALTA { get; set; }
-        [Display(Name = "Nombre del contacto")]
+        [ColumnaGridViewAtributo(Name = "Nombre del contacto")]
         public string CONTACTO { get; set; }
-        [Display(Name = "Teléfono")]
+        [ColumnaGridViewAtributo(Name = "Teléfono")]
         public string TELEFONO { get; set; }
-        [Display(Name = "FAX")]
+        [ColumnaGridViewAtributo(Name = "FAX")]
         public string FAX { get; set; }
-        [Display(Name = "Email")]
+        [ColumnaGridViewAtributo(Name = "Email")]
         public string EMAIL { get; set; }
-        [Display(Name = "Saldo")]
+        [ColumnaGridViewAtributo(Name = "Saldo")]
         public decimal? SALDO { get; set; }
-        [Display(Name = "Crédito")]
+        [ColumnaGridViewAtributo(Name = "Crédito")]
         public decimal? CREDITO { get; set; }
-        [Display(Name = "Activo")]
+        [ColumnaGridViewAtributo(Name = "Activo")]
         public string ACTIVO { get; set; } = "S";
-        [Display(Name = "CUIT")]
+        [ColumnaGridViewAtributo(Name = "CUIT")]
         public string CUIT { get; set; }
-        [Display(Name = "IIBB")]
+        [ColumnaGridViewAtributo(Name = "IIBB")]
         public string BRUTOS { get; set; }
-        [Display(Name = "Convenio")]
+        [ColumnaGridViewAtributo(Name = "Convenio")]
         public int CM { get; set; }
-        [Display(Name = "Bonificación")]
+        [ColumnaGridViewAtributo(Name = "Bonificación")]
         public decimal? BONIFIC { get; set; }
-        [Display(Name = "Moneda")]
+        [ColumnaGridViewAtributo(Name = "Moneda")]
         public string MONEDA { get; set; }
-        [Display(Name = "Dirección de entrega")]
+        [ColumnaGridViewAtributo(Name = "Dirección de entrega")]
         public string ENTREGA { get; set; }
-        [Display(Name = "Código postal alfanumerico")]
+        [ColumnaGridViewAtributo(Name = "Código postal alfanumerico")]
         public string CG_POSTA { get; set; }
-        [Display(Name = "Porc.IVA especial")]
+        [ColumnaGridViewAtributo(Name = "Porc.IVA especial")]
         public decimal? PORCIVAESP { get; set; }
-        [Display(Name = "LEY19640")]
+        [ColumnaGridViewAtributo(Name = "LEY19640")]
         public int? LEY19640 { get; set; }
-        [Display(Name = "Compañía")]
+        [ColumnaGridViewAtributo(Name = "Compañía")]
         public int? CG_CIA { get; set; }
 
         [NotMapped]

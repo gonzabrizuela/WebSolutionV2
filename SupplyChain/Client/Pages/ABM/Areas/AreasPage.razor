@@ -1,0 +1,92 @@
+﻿@page "/area"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+@using System.Configuration;
+@using System.Data.SqlClient;
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.BarcodeGenerator
+@using System.Text.Json
+@using System.Linq
+@attribute [Authorize]
+@inject IJSRuntime JsRuntime
+@using SupplyChain
+@using System.Net.Http.Json
+
+@inject NavigationManager NavManager
+@inherits SupplyChain.Pages.Areas.AreasPageBase
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid AllowReordering="true" ShowColumnChooser="true" ShowColumnMenu="true" AllowResizing="true" EnablePersistence="true"
+                    @ref="Grid" DataSource="@areas" AllowExcelExport="true" AllowRowDragAndDrop="true" AllowGrouping="true" ID="Areas"
+                    AllowSorting="true" AllowPaging="true" AllowFiltering="true" Toolbar="@Toolbaritems" GridLines="GridLine.Both">
+                <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GridSelectionSettings>
+                <GridEvents OnToolbarClick="@ClickHandler" OnActionBegin="ActionBegin" TValue="Area"></GridEvents>
+                <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.CheckBox"></GridFilterSettings>
+                <GridGroupSettings ShowGroupedColumn="true"></GridGroupSettings>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="@EditMode.Dialog">
+                    <Template>
+                        @{
+                            var arr = (context as Area);
+                            <div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="e-float-text e-label-top">Código:</label>
+                                        <SfNumericTextBox ID="CG_AREA" @bind-Value="@(arr.CG_AREA)" Enabled="@Disabled"></SfNumericTextBox>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label class="e-float-text e-label-top">Descripcion:</label>
+                                        <SfTextBox ID="DES_AREA" @bind-Value="@(arr.DES_AREA)"></SfTextBox>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="e-float-text e-label-top">Tipo Hora:</label>
+                                        <SfNumericTextBox ID="CG_TIPOAREA" @bind-Value="@(arr.CG_TIPOAREA)"></SfNumericTextBox>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label class="e-float-text e-label-top">Codigo proveedor:</label>
+                                        <SfNumericTextBox ID="CG_PROVE" @bind-Value="@(arr.CG_PROVE)"></SfNumericTextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </Template>
+                </GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Area.CG_AREA) HeaderText="Codigo" TextAlign="TextAlign.Left" IsPrimaryKey="true"></GridColumn>
+                    <GridColumn Field=@nameof(Area.DES_AREA) HeaderText="Categoría" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Area.CG_TIPOAREA) HeaderText="Tipo hora" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Area.CG_PROVE) HeaderText="Proveedor" TextAlign="TextAlign.Left"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
+<style>
+    .form-group.col-md-6 {
+        width: 200px;
+    }
+
+    label.e-float-text {
+        position: relative;
+        padding-left: 0;
+        top: 10%;
+    }
+
+    .e-input-group.e-control-wrapper.customClass {
+        color: black;
+        background-color: lightblue;
+    }
+</style>
+@code {
+}

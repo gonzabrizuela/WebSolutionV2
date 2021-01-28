@@ -1,0 +1,101 @@
+﻿@page "/pais"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+@using System.Configuration;
+@using System.Data.SqlClient;
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.BarcodeGenerator
+@using System.Text.Json
+@using System.Linq
+@inject IJSRuntime JsRuntime
+@using SupplyChain 
+@using System.Net.Http.Json
+
+@inject NavigationManager NavManager
+@inherits SupplyChain.Pages.Paisex.PaisesPageBase
+
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row">
+            <SfGrid AllowReordering="true" ShowColumnChooser="true" ShowColumnMenu="true" AllowResizing="true" EnablePersistence="true"
+                    @ref="Grid" DataSource="@paises" AllowExcelExport="true" AllowRowDragAndDrop="true" AllowGrouping="true"
+                    AllowSorting="true" AllowPaging="true" AllowFiltering="true" Toolbar="@Toolbaritems">
+                <GridSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GridSelectionSettings>
+                <GridEvents OnToolbarClick="@ClickHandler" OnActionBegin="ActionBegin" TValue="Pais"></GridEvents>
+                <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.CheckBox"></GridFilterSettings>
+                <GridGroupSettings ShowGroupedColumn="true"></GridGroupSettings>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="@EditMode.Dialog">
+                    <Template>
+                        @{
+                            var p = (context as Pais);
+                                                <div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Código Pais:</label>
+                                                            <SfNumericTextBox ID="CG_PAIS" @bind-Value="@(p.Cg_Pais)" Enabled="@Disabled"></SfNumericTextBox>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Codigo:</label>
+                                                            <SfNumericTextBox ID="Codigo" @bind-Value="@(p.Codigo)"></SfNumericTextBox>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Descripcion pais:</label>
+                                                            <SfNumericTextBox ID="Des_Pais" @bind-Value="@(p.Des_Pais)"></SfNumericTextBox>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Mercosur:</label>
+                                                            <SfNumericTextBox ID="Mercosur" @bind-Value="@(p.Mercosur)"></SfNumericTextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="e-float-text e-label-top">Cuit:</label>
+                                                            <SfNumericTextBox ID="Cuit" @bind-Value="@(p.Cuit)"></SfNumericTextBox>
+                                                        </div>
+
+                                                      
+                                                    </div>
+                                                </div>
+                        }
+                    </Template>
+                </GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field=@nameof(Pais.Codigo) HeaderText="Código" TextAlign="TextAlign.Left" IsPrimaryKey="true"></GridColumn>
+                    <GridColumn Field=@nameof(Pais.Cg_Pais) HeaderText="Código Pais" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Pais.Des_Pais) HeaderText="Descripción país" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Pais.Mercosur) HeaderText="Mercosur" TextAlign="TextAlign.Left"></GridColumn>
+                    <GridColumn Field=@nameof(Pais.Cuit) HeaderText="Cuit" TextAlign="TextAlign.Left"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </div>
+</div>
+<style>
+    .form-group.col-md-6 {
+        width: 200px;
+    }
+
+    label.e-float-text {
+        position: relative;
+        padding-left: 0;
+        top: 10%;
+    }
+
+    .e-input-group.e-control-wrapper.customClass {
+        color: black;
+        background-color: lightblue;
+    }
+</style>
+@code {
+
+}

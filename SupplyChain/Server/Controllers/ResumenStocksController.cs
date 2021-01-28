@@ -81,13 +81,13 @@ namespace SupplyChain.Server.Controllers
                 resumenStock.LOTE = resumenStock.LOTE == null ? "" : resumenStock.LOTE ;
                 resumenStock.SERIE = resumenStock.SERIE == null ? "" : resumenStock.SERIE ;
                 return await _context.ResumenStock.Where(r => 
-                    r.CG_DEP == resumenStock.CG_DEP
-                    && r.CG_ART.ToUpper() == resumenStock.CG_ART.ToUpper()
-                    && r.LOTE.ToUpper() == resumenStock.LOTE.ToUpper()
-                    && r.DESPACHO.ToUpper() == resumenStock.DESPACHO.ToUpper()
-                    && r.SERIE.ToUpper() == resumenStock.SERIE.ToUpper()
-                ).FirstAsync();
-             }
+                r.CG_DEP == resumenStock.CG_DEP
+                && r.CG_ART.ToUpper() == resumenStock.CG_ART.ToUpper()
+                && r.LOTE.ToUpper() == resumenStock.LOTE.ToUpper()
+                && r.DESPACHO.ToUpper() == resumenStock.DESPACHO.ToUpper()
+                && r.SERIE.ToUpper() == resumenStock.SERIE.ToUpper()
+            ).FirstAsync();
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex);
@@ -96,33 +96,7 @@ namespace SupplyChain.Server.Controllers
         }
 
 
-        [HttpGet("GetStock")]
-        public async Task<ActionResult<IEnumerable<ResumenStock>>> GetStock([FromQuery] ResumenStock resumenStock)
-        {
-            try
-            {
-
-                resumenStock.DESPACHO = resumenStock.DESPACHO == null ? "" : resumenStock.DESPACHO;
-                resumenStock.LOTE = resumenStock.LOTE == null ? "" : resumenStock.LOTE;
-                resumenStock.SERIE = resumenStock.SERIE == null ? "" : resumenStock.SERIE;
-                return await _context.ResumenStock.Where(r =>
-                    r.CG_DEP == resumenStock.CG_DEP
-                    && r.CG_ART.ToUpper() == resumenStock.CG_ART.ToUpper()
-                    && r.LOTE.ToUpper() == resumenStock.LOTE.ToUpper()
-                    && r.DESPACHO.ToUpper() == resumenStock.DESPACHO.ToUpper()
-                    && r.SERIE.ToUpper() == resumenStock.SERIE.ToUpper()
-                ).ToListAsync();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-
-        }
-
-
-
-
+        
 
         // PUT: api/ResumenStocks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

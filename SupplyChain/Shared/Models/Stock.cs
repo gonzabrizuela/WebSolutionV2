@@ -181,13 +181,5 @@ namespace SupplyChain.Shared.Models
         public int? REGISTRO { get; set; }
         [ColumnaGridViewAtributo(Name = "Compañía")]
         public int? CG_CIA { get; set; } = 0;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-
-        //private void NotifyPropertyChanged(string propertyName)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
     }
 }

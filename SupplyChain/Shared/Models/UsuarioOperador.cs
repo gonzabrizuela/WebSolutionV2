@@ -14,15 +14,15 @@ namespace SupplyChain.Shared.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? id { get; set; }
         public Guid guid { get; set; }
-        [Display(Name = "Usuario")]
+        [ColumnaGridViewAtributo(Name = "Usuario")]
         public string Usuario { get; set; }
-        [Display(Name = "Clave")]
+        [ColumnaGridViewAtributo(Name = "Clave")]
         public string Clave { get; set; }
-        [Display(Name = "Nombre")]
+        [ColumnaGridViewAtributo(Name = "Nombre")]
         public string Nombre { get; set; }
-        [Display(Name = "Apellido")]
+        [ColumnaGridViewAtributo(Name = "Apellido")]
         public string Apellido { get; set; }
-        [Display(Name = "Compañia")]
+        [ColumnaGridViewAtributo(Name = "Compañia")]
         public int? Cg_Cia { get; set; }
 
 

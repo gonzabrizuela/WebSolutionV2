@@ -8,21 +8,21 @@ namespace SupplyChain.Shared.Models
 {
     public class ResumenStock
     {
-        [Display(Name = "Codigo Articulo")]
+        [ColumnaGridViewAtributo (Name = "Codigo Articulo")]
         public string CG_ART { get; set; }
-        [Display(Name = "Despacho")]
+        [ColumnaGridViewAtributo(Name = "Despacho")]
         public string DESPACHO { get; set; } = "";
-        [Display(Name = "Lote")]
+        [ColumnaGridViewAtributo(Name = "Lote")]
         public string LOTE { get; set; } = "";
-        [Display(Name = "Serie")]
+        [ColumnaGridViewAtributo(Name = "Serie")]
         public string SERIE { get; set; } = "";
-        [Display(Name = "Ubicacion")]
+        [ColumnaGridViewAtributo(Name = "Ubicacion")]
         public string UBICACION { get; set; } = "";
-        [Display(Name = "Stock")]
+        [ColumnaGridViewAtributo(Name = "Stock")]
         public decimal STOCK { get; set; } = 0;
-        [Display(Name = "Deposito")]
+        [ColumnaGridViewAtributo(Name = "Deposito")]
         public int CG_DEP { get; set; } = 0;
-        [Display(Name = "Orden Ingreso")]
+        [ColumnaGridViewAtributo(Name = "Orden Ingreso")]
         public int CG_ORDING { get; set; } = 0;
 
         [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]

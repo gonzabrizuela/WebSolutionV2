@@ -50,16 +50,26 @@ namespace SupplyChain.Shared.Models
         public string ACTIVO { get; set; }
         [ColumnaGridViewAtributo(Name = "Tiempo fabricación")]
         public decimal? TIEMPOFAB { get; set; }
+        public decimal IMPA1 { get; set; } = 0;
+        public decimal IMPA2 { get; set; } = 0;
+        public decimal IMPB1 { get; set; } = 0;
+        public decimal IMPB2 { get; set; } = 0;
+        public decimal IMPC1 { get; set; } = 0;
+        public decimal IMPC2 { get; set; } = 0;
         [ColumnaGridViewAtributo(Name = "Costo fabricación")]
         public decimal? COSTO { get; set; }
         [ColumnaGridViewAtributo(Name = "Costo fabricación terceros")]
         public decimal? COSTOTER { get; set; }
         [ColumnaGridViewAtributo(Name = "Moneda costo")]
         public string MONEDA { get; set; }
+        public decimal COSTOUCLOCAL { get; set; } = 0;
+        public decimal COSTOUCDOL { get; set; } = 0;
         [ColumnaGridViewAtributo(Name = "Celda fabricación")]
         public string CG_CELDA { get; set; }
         [ColumnaGridViewAtributo(Name = "Tipo área fabricación")]
         public int? CG_TIPOAREA { get; set; }
+        public int? CG_CLAS { get; set; }
+        public decimal CG_CUENT { get; set; } = 0;
         //[ColumnaGridViewAtributo(Name = "Cuenta contable")]
         //public decimal? CG_CUENT1 { get; set; }
         //[ColumnaGridViewAtributo(Name = "Unidad equivalente costo")]

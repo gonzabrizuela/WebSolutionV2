@@ -8,40 +8,40 @@ namespace SupplyChain.Shared.Models
     public class Compañia
     {
         [Key]
-        [Display(Name = "Codigo")]
+        [ColumnaGridViewAtributo(Name = "Codigo")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? CG_CIA { get; set; }
-        [Display(Name = "Compañía")]
+        [ColumnaGridViewAtributo(Name = "Compañía")]
         public string DES_CIA { get; set; }
-        [Display(Name = "Domicilio fiscal")]
+        [ColumnaGridViewAtributo(Name = "Domicilio fiscal")]
         public string DOM_FISC { get; set; }
-        [Display(Name = "Localidad")]
+        [ColumnaGridViewAtributo(Name = "Localidad")]
         public string LOC_FISC { get; set; }
-        [Display(Name = "Provincia")]
+        [ColumnaGridViewAtributo(Name = "Provincia")]
         public string DES_PROV { get; set; }
-        [Display(Name = "Codigo zip")]
+        [ColumnaGridViewAtributo(Name = "Codigo zip")]
         public string COD_POST { get; set; }
-        [Display(Name = "Pais")]
+        [ColumnaGridViewAtributo(Name = "Pais")]
         public string DES_PAIS { get; set; }
-        [Display(Name = "Domicilio comercial")]
+        [ColumnaGridViewAtributo(Name = "Domicilio comercial")]
         public string DOM_COM { get; set; }
-        [Display(Name = "Localidad")]
+        [ColumnaGridViewAtributo(Name = "Localidad")]
         public string LOC_COM { get; set; }
-        [Display(Name = "Prefijo TE pais")]
+        [ColumnaGridViewAtributo(Name = "Prefijo TE pais")]
         public int? PREFIJO { get; set; }
-        [Display(Name = "Teléfono")]
+        [ColumnaGridViewAtributo(Name = "Teléfono")]
         public string TELEFONO { get; set; }
-        [Display(Name = "CUIT")]
+        [ColumnaGridViewAtributo(Name = "CUIT")]
         public string CUIT { get; set; }
-        [Display(Name = "IIBB")]
+        [ColumnaGridViewAtributo(Name = "IIBB")]
         public string IIBB { get; set; }
-        [Display(Name = "Actividad")]
+        [ColumnaGridViewAtributo(Name = "Actividad")]
         public string ACTIVIDAD { get; set; }
-        [Display(Name = "Fecha contratación")]
+        [ColumnaGridViewAtributo(Name = "Fecha contratación")]
         public DateTime FE_CONTRAT { get; set; }
-        [Display(Name = "Fecha desvinculación")]
+        [ColumnaGridViewAtributo(Name = "Fecha desvinculación")]
         public string FE_CIERRE { get; set; }
-        [Display(Name = "Aviso")]
+        [ColumnaGridViewAtributo(Name = "Aviso")]
         public string AVISO { get; set; }
 
 
