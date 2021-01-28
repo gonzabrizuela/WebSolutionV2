@@ -1,0 +1,135 @@
+﻿@layout LoginLayout
+@page "/"
+@page "/login"
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Notifications
+@using Syncfusion.Blazor.Spinner;
+@using Syncfusion.Blazor.Navigations
+@inject HttpClient Http
+@*@inject DatosGlobales DatosGlobales*@
+@inject IJSRuntime JsRuntime
+@inject Microsoft.AspNetCore.Components.NavigationManager navigationManager
+@inject ILoginService loginService
+
+<SfToast ID="toast_default" @ref="ToastObj">
+    <ToastPosition X="Left"></ToastPosition>
+</SfToast>
+
+<div id="targetLogin" class="dialogLogin">
+    <SfDialog Target="#targetLogin" Width="100%" Height="100%" IsModal="false"
+              ShowCloseIcon="false" CloseOnEscape="false"
+              @bind-Visible="@IsDialogLoginVisible">
+        <DialogTemplates>
+            <Header>
+                @*<img src="/Logo.png" />*@
+                &nbsp;&nbsp;Supply Chain
+
+            </Header>
+            <Content>
+                <br />
+                <div style="margin-top:30px;margin-left:40px;margin-right:40px">
+                    <SfTextBox Placeholder="Usuario" @bind-Value="@usuario"
+                               ShowClearButton="true" Type="InputType.Text"></SfTextBox>
+                </div>
+                <div style="margin-top:30px;margin-left:40px;margin-right:40px">
+                    <SfTextBox Placeholder="Contraseña" @bind-Value="@contras"
+                               ShowClearButton="true" Type="InputType.Password"></SfTextBox>
+                </div>
+                <SfSpinner @ref="SpinnerLogin" />
+            </Content>
+        </DialogTemplates>
+        <DialogButtons>
+            <DialogButton Content="OK" IsPrimary="true" OnClick="@LoginDialogOk" />
+        </DialogButtons>
+    </SfDialog>
+</div>
+
+@*else
+    {
+        //  L L A M A R   A L    M E N U
+        <div class="pt-5 mt-5">
+            <p>Cargar Menu</p>
+        </div>
+
+    }*@
+
+@code {
+    protected string Usuario;
+    protected string usuario = "";
+    protected string contras = "";
+    protected bool IsDialogLoginVisible { get; set; } = true;
+    protected SfToast ToastObj;
+    private SfSpinner SpinnerLogin;
+
+    protected async override Task OnInitializedAsync()
+    {
+        // Recoge usuario
+        Usuario = await JsRuntime.InvokeAsync<string>("sessionStorage.getItem", "Usuario");
+        StateHasChanged();
+    }
+
+    private async Task LoginDialogOk(Object args)
+    {
+        try
+        {
+            if (usuario != "" && contras != "")
+            {
+                await SpinnerLogin.ShowAsync();
+
+                Usuario xUser = await Http.GetFromJsonAsync<Usuario>($"api/Usuarios/{usuario}/{contras}");
+                if (xUser != null)
+                {
+                    await JsRuntime.InvokeVoidAsync("sessionStorage.setItem", "Usuario", xUser.UserName);
+
+                    IsDialogLoginVisible = false;
+                    await this.ToastObj.Show(new ToastModel
+                    {
+                        Title = $"Bienvenid@ {xUser.UserName}!",
+                        Content = "Usuario y contraseña correcta.",
+                        CssClass = "e-toast-success",
+                        Icon = "e-success toast-icons"
+                    });
+
+                    await loginService.Login(xUser.UserName);
+                    navigationManager.NavigateTo("/home");
+                }
+                else
+                {
+                    await this.ToastObj.Show(new ToastModel
+                    {
+                        Title = "Error!",
+                        Content = "Usuario o contraseña incorrecta.",
+                        CssClass = "e-toast-danger",
+                        Icon = "e-error toast-icons"
+                    });
+                }
+
+                await SpinnerLogin.HideAsync();
+            }
+            else
+            {
+                await this.ToastObj.Show(new ToastModel { Title = "Aviso!", 
+                    Content = "Debe indicar usuario y contraseña.", 
+                    CssClass = "e-toast-warning", Icon = "e-warning toast-icons" });
+            }
+        }
+        catch
+        {
+            throw;
+        }
+    }
+}
+
+<style>
+    .dialogLogin {
+        position: relative;
+        height: 410px;
+        max-height: 410px;
+        width: 30%;
+        margin-top: 100px;
+        margin-right: 35%;
+        margin-left: 180px;
+        margin-bottom: auto;
+    }
+</style>

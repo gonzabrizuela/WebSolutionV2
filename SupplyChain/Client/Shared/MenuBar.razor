@@ -1,0 +1,78 @@
+﻿@using Syncfusion.Blazor.Navigations
+
+<SfMenu Items="@MenuItems" EnableScrolling="true" CssClass="" HamburgerMode="false"></SfMenu>
+
+@code {
+
+    [CascadingParameter] private Task<AuthenticationState> AuthenticationStateProvider { get; set; }
+
+
+
+    public List<MenuItem> MenuItems = new List<MenuItem>{
+        new MenuItem {Text="INICIO", Url="/home", IconCss = "oi oi-home"},
+        new MenuItem{ Text = "ADMINISTRACIÓN", IconCss = "e-icons e-file", Items = new List<MenuItem>{
+            new MenuItem { Text= "Parámetros", IconCss= "e-icons e-open" },
+            new MenuItem { Separator= true },
+            new MenuItem { Text= "Recálculo de stock", IconCss= "e-icons e-save" },
+            new MenuItem { Text= "Monedas" },
+            new MenuItem { Separator= true },
+            new MenuItem { Text= "índices y tasas de cambio" },
+            new MenuItem { Text= "Usuarios y contraseñas" }}
+    },
+        new MenuItem{ Text = "ABASTECIMIENTO", IconCss = "e-icons e-edit", Items = new List<MenuItem>{
+            new MenuItem{ Text= "Compras", IconCss= "e-icons e-cut" },
+            new MenuItem { Separator= true },
+            new MenuItem{ Text= "Estado de ordenes de compras", IconCss= "e-icons e-copy" }}
+    },
+        new MenuItem{ Text = "INVENTARIOS", Items = new List<MenuItem>{
+            new MenuItem { Text= "Administración de stock", Url="/stockoperaciones" },
+            new MenuItem { Separator= true },
+            new MenuItem{ Text = "Saldos de stock"} }
+    },
+    new MenuItem { Text = "PCP", Items = new List<MenuItem>{
+        new MenuItem { Text= "Pronóstico de ventas" },
+        new MenuItem { Separator=true },
+        new MenuItem { Text= "Pedidos de clientes" },
+        new MenuItem { Text= "PCP" }}
+    },
+    new MenuItem { Text = "INGENIERÍA", Items = new List<MenuItem>{
+        new MenuItem { Text= "Lista de materiales y hoja de ruta" },
+        new MenuItem { Text= "Celdas" },
+        new MenuItem { Separator=true },
+        new MenuItem { Text= "Tipos de celdas" },
+        new MenuItem { Text= "Áreas" },
+        new MenuItem { Text= "Líneas" },
+        new MenuItem { Separator=true },
+        new MenuItem { Text= "Tipos de paradas de máquina" },
+        new MenuItem { Text= "Tipos de insumos" },
+        new MenuItem { Text= "Procesos" },
+        new MenuItem { Text= "Tareas de procesos" },
+        new MenuItem { Text= "Categoría de operarios" }}
+    },
+        new MenuItem{ Text = "CALIDAD", Items = new List<MenuItem>() {
+            new MenuItem { Text= "Registro de no conformidades" },
+            new MenuItem { Separator= true },
+            new MenuItem { Text= "Tipos de no conformidades" }}
+    },
+        new MenuItem { Text = "COSTOS", Items = new List<MenuItem>(){
+            new MenuItem { Text= "Costos estándar" },
+            new MenuItem { Text= "Costos de productos dados de alta" }
+        }
+    },
+        new MenuItem { Text = "CONTROL DE CALIDAD", Items = new List<MenuItem>(){
+            new MenuItem { Text= "Registro de ensayos" },
+            new MenuItem { Text= "Trazabilidad" }
+        }}
+    };
+
+    protected async override Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider;
+        var user = authState.User;
+        if (user.Identity.IsAuthenticated)
+        {
+            //Cargar Menu segun usuario
+        }
+    }
+}
+

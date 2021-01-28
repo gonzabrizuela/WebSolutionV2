@@ -1,0 +1,29 @@
+﻿
+.e-file::before {
+    content: '\e30d';
+}
+
+.e-edit::before {
+    content: '\e7a3';
+}
+
+.e-open::before {
+    content: '\ec04';
+}
+
+.e-save::before {
+    content: '\ec11';
+}
+
+.e-cut::before {
+    content: '\e279';
+}
+
+.e-copy::before {
+    content: '\e280';
+}
+
+.e-paste::before {
+    content: '\e601';
+}
+
